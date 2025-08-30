@@ -10,11 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2xge2gXUUPg6s/y0T8D4T+n0w1f6+93+A9T50Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Chosen Palette: Warm Neutral -->
-    <!-- Application Structure Plan: The application is designed as a single-page, filterable menu. A top-level navigation bar with buttons for 'All', 'Coffee', 'Non-Coffee', and 'Bites' allows users to instantly filter the content. This task-oriented approach is more efficient for customers than a long, static scroll, letting them quickly find what they're interested in. Menu items are displayed in a responsive grid of cards for a modern, clean aesthetic. An interactive bar chart analyzing price distribution is included to add a data visualization element, offering a quick overview of the shop's affordability and transforming a simple menu into a more engaging digital experience. -->
+    <!-- Application Structure Plan: The application is designed as a single-page, filterable menu. A top-level navigation bar with buttons for 'All', 'Coffee', 'Non-Coffee', and 'Bites' allows users to instantly filter the content. Menu items are now grouped by subcategory (e.g., 'Espresso & Milk', 'Signature Sips') into distinct sections. This new structure provides a more organized and scannable visual hierarchy, allowing users to find items more intuitively than a single, flat grid. Filters now show/hide entire subcategory sections for improved performance and clarity. The chart has been removed as per user request to simplify the menu. -->
     <!-- Visualization & Content Choices: 
-    - Menu Items: Report Info -> Goal: Organize/Inform -> Presentation: Grid of styled HTML cards -> Interaction: Filtered visibility via category buttons -> Justification: Modern, responsive, and cleanly organizes item details. Method: Tailwind CSS.
-    - Menu Categories: Report Info -> Goal: Navigation -> Presentation: Row of HTML buttons -> Interaction: Click events trigger JS filtering logic -> Justification: Intuitive and standard UI pattern for content filtering, enhancing usability. Method: JS + Tailwind CSS.
-    - Item Prices: Report Info -> Goal: Compare/Analyze -> Presentation: Horizontal Bar Chart showing item counts per price range -> Interaction: Hover tooltips display exact counts -> Justification: Provides a unique, at-a- glance analytical view of the menu's pricing structure, adding an engaging data visualization component. Library: Chart.js (Canvas).
+    - Menu Items: Report Info -> Goal: Organize/Inform -> Presentation: A clean, text-based list of items, grouped by subcategory -> Interaction: Filtered visibility of subcategory sections via category buttons -> Justification: Breaks the menu into logical, digestible chunks, enhancing scannability and visual organization without the use of images. Method: Tailwind CSS.
+    - Menu Categories: Report Info -> Goal: Navigation -> Presentation: Row of HTML buttons -> Interaction: Click events trigger JS logic to show/hide subcategory sections -> Justification: An intuitive and standard UI pattern for content filtering that now works at a higher level of information architecture. Method: JS + Tailwind CSS.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
@@ -45,14 +44,14 @@
                         Welcome to our interactive menu. Use the filters below to explore our curated selection of beverages and bites. Whether you're in the mood for our signature house blend coffee, a refreshing elixir, or a delicious snack, you'll find it right here.
                     </p>
                 </div>
-                <div id="filters" class="sticky top-0 z-10 bg-[#FDFBF8] flex justify-center flex-wrap gap-2 md:gap-4 mb-8 py-4 -mx-4 sm:mx-0">
+                <div id="filters" class="sticky top-0 z-10 bg-[#FDFBF8] flex justify-center flex-wrap gap-2 md:gap-4 mb-8 py-4 -mx-4 sm:mx-0 shadow-md">
                     <button class="filter-btn active-filter px-4 py-2 text-sm md:text-base font-medium rounded-full bg-white text-gray-700 shadow-sm hover:bg-gray-100 transition-colors" data-category="all">All</button>
                     <button class="filter-btn px-4 py-2 text-sm md:text-base font-medium rounded-full bg-white text-gray-700 shadow-sm hover:bg-gray-100 transition-colors" data-category="coffee">Coffee</button>
                     <button class="filter-btn px-4 py-2 text-sm md:text-base font-medium rounded-full bg-white text-gray-700 shadow-sm hover:bg-gray-100 transition-colors" data-category="non-coffee">Non-Coffee</button>
                     <button class="filter-btn px-4 py-2 text-sm md:text-base font-medium rounded-full bg-white text-gray-700 shadow-sm hover:bg-gray-100 transition-colors" data-category="bites">Bites</button>
                 </div>
 
-                <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div id="menu-container">
                 </div>
             </section>
         </main>
@@ -109,40 +108,64 @@
             { name: "Gluten-Free Brownie", description: "Rich and fudgy.", price: 4.00, category: "bites", subcategory: "Baked Goods" }
         ];
 
-        const menuGrid = document.getElementById('menu-grid');
+        const menuContainer = document.getElementById('menu-container');
         const filterBtns = document.querySelectorAll('.filter-btn');
 
         const renderMenu = (items) => {
-            menuGrid.innerHTML = '';
-            items.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'bg-white rounded-xl shadow-sm p-6 flex flex-col justify-between transition-transform transform hover:scale-105';
-                card.innerHTML = `
-                    <div>
+            menuContainer.innerHTML = '';
+            const groupedItems = items.reduce((acc, item) => {
+                const subcategory = item.subcategory;
+                if (!acc[subcategory]) {
+                    acc[subcategory] = {
+                        category: item.category,
+                        items: []
+                    };
+                }
+                acc[subcategory].items.push(item);
+                return acc;
+            }, {});
+
+            for (const subcategory in groupedItems) {
+                const group = groupedItems[subcategory];
+                const section = document.createElement('div');
+                section.className = 'subcategory-section mb-12';
+                section.dataset.category = group.category;
+                section.innerHTML = `
+                    <h2 class="text-2xl md:text-3xl font-semibold text-[#6B4F40] mb-6 border-b-2 border-gray-200 pb-2">${subcategory}</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+                `;
+                const grid = section.querySelector('.grid');
+
+                group.items.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'bg-white rounded-xl shadow-lg transition-transform transform hover:scale-105 overflow-hidden p-6';
+                    card.innerHTML = `
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="text-lg font-semibold text-gray-800">${item.name}</h3>
                             <p class="text-lg font-semibold text-[#A37F64]">$${item.price.toFixed(2)}</p>
                         </div>
                         <p class="text-gray-500 text-sm">${item.description}</p>
-                    </div>
-                    <p class="text-xs text-gray-400 mt-4 font-medium uppercase tracking-wider">${item.subcategory}</p>
-                `;
-                menuGrid.appendChild(card);
-            });
+                    `;
+                    grid.appendChild(card);
+                });
+                menuContainer.appendChild(section);
+            }
         };
 
         const handleFilterClick = (e) => {
             const category = e.target.dataset.category;
+            const sections = document.querySelectorAll('.subcategory-section');
 
             filterBtns.forEach(btn => btn.classList.remove('active-filter'));
             e.target.classList.add('active-filter');
 
-            if (category === 'all') {
-                renderMenu(menuData);
-            } else {
-                const filteredData = menuData.filter(item => item.category === category);
-                renderMenu(filteredData);
-            }
+            sections.forEach(section => {
+                if (category === 'all' || section.dataset.category === category) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
         };
 
         filterBtns.forEach(btn => btn.addEventListener('click', handleFilterClick));
