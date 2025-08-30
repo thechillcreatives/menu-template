@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cedar & Spice Restaurant Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General Body and Container Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5dc;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        .menu-section-header {
+            text-align: center;
+            color: #5e4d46;
+            font-family: 'Georgia', serif;
+            border-bottom: 2px solid #5e4d46;
+            padding-bottom: 10px;
+        }
+        .item-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 20px;
+        }
+
+        /* Scroll-to-top button styles */
+        #scrollToTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: #5e4d46;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        #scrollToTopBtn.show {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header style="background: linear-gradient(to right, #5e4d46, #7a685e); color: white; text-align: center; padding: 30px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+        <h1 style="margin: 0; font-size: 3.5rem; font-family: 'Georgia', serif;">CEDAR & SPICE</h1>
+        <p style="margin: 5px 0 20px; font-size: 1.2rem; font-style: italic;">Lebanese & International Cuisine</p>
+        <div style="display: flex; justify-content: center; gap: 20px; margin-top: 15px;">
+            <span style="background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 20px;"><i class="fas fa-phone"></i> +961 1 123 456</span>
+            <span style="background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 20px;"><i class="fas fa-location-dot"></i> Beirut, Lebanon</span>
+        </div>
+    </header>
+
+    <!-- Menu Container -->
+    <div class="container">
+        <!-- Menu Navigation -->
+        <div id="menu-nav" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 30px;">
+            <a href="#mezza" style="text-decoration: none; background: #5e4d46; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">Mezza</a>
+            <a href="#grills" style="text-decoration: none; background: #5e4d46; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">Grills</a>
+            <a href="#wraps" style="text-decoration: none; background: #5e4d46; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">Wraps</a>
+            <a href="#saj" style="text-decoration: none; background: #5e4d46; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">Saj</a>
+            <a href="#international" style="text-decoration: none; background: #5e4d46; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">International</a>
+            <a href="#desserts" style="text-decoration: none; background: #5e4d46; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">Desserts</a>
+            <a href="#drinks" style="text-decoration: none; background: #5e4d46; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">Drinks</a>
+            <a href="#arguile" style="text-decoration: none; background: #5e4d46; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">Arguile</a>
+        </div>
+
+        <!-- Welcome Note -->
+        <div style="text-align: center; margin-bottom: 40px; padding: 20px; background-color: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <h2 style="color: #5e4d46; margin-top: 0;">Welcome to Cedar & Spice Restaurant</h2>
+            <p style="max-width: 800px; margin: 0 auto; line-height: 1.6;">
+                Experience the rich flavors of Lebanon combined with international favorites. Our dishes are prepared with the freshest ingredients and traditional recipes passed down through generations.
+            </p>
+        </div>
+
+        <!-- Mezza Section -->
+        <section id="mezza" style="margin-bottom: 50px;">
+            <h2 class="menu-section-header">LEBANESE MEZZA</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px;">
+                <!-- Item 1 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Hummus</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$8.99</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Chickpea purée with tahini, lemon juice, and olive oil</p>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Baba Ghanoush</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$9.50</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Smoked eggplant mashed with tahini, garlic, and lemon</p>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Tabbouleh</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$10.99</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Parsley salad with bulgur, tomatoes, mint, and lemon dressing</p>
+                </div>
+                
+                <!-- Item 4 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Fattoush</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$9.99</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Mixed greens salad with toasted pita chips and sumac dressing</p>
+                </div>
+                
+                <!-- Item 5 -->
+                <div class="item-card">
+                    <div style="padding: 20px;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <h3 style="margin: 0; color: #5e4d46;">Kibbeh</h3>
+                            <span style="font-weight: bold; color: #b8860b;">$12.99</span>
+                        </div>
+                        <p style="margin: 10px 0; color: #555;">Cracked wheat shells filled with minced meat and pine nuts</p>
+                    </div>
+                </div>
+                
+                <!-- Item 6 -->
+                <div class="item-card">
+                    <div style="padding: 20px;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <h3 style="margin: 0; color: #5e4d46;">Sambousek</h3>
+                            <span style="font-weight: bold; color: #b8860b;">$11.50</span>
+                        </div>
+                        <p style="margin: 10px 0; color: #555;">Crispy pastries filled with cheese or spiced meat</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grills Section -->
+        <section id="grills" style="margin-bottom: 50px;">
+            <h2 class="menu-section-header">GRILLS</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px;">
+                <!-- Item 1 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Shish Taouk</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$18.99</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Marinated chicken breast grilled on skewers</p>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Kafta Kabab</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$19.50</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Grilled minced meat with parsley and onions</p>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Lamb Chops</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$26.99</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Marinated lamb chops grilled to perfection</p>
+                </div>
+                
+                <!-- Item 4 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Mixed Grill Platter</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$28.50</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">A platter with shish taouk, kafta kabab, and lamb chops</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wraps & Sandwiches Section -->
+        <section id="wraps" style="margin-bottom: 50px;">
+            <h2 class="menu-section-header">WRAPS & SANDWICHES</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px;">
+                <!-- Item 1 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Chicken Shawarma Wrap</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$11.99</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Marinated chicken, pickles, fries, and garlic sauce in a wrap</p>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Beef Shawarma Wrap</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$12.99</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Marinated beef, tahini sauce, tomatoes, and onions in a wrap</p>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Falafel Sandwich</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$9.50</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Crispy falafel balls with hummus, pickles, and vegetables</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Saj Section -->
+        <section id="saj" style="margin-bottom: 50px;">
+            <h2 class="menu-section-header">SAJ</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px;">
+                <!-- Item 1 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Zaatar Saj</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$5.00</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Thyme and sesame blend baked on a thin Saj bread</p>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Cheese Saj</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$7.00</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Melted cheese on thin Saj bread</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- International Section -->
+        <section id="international" style="margin-bottom: 50px;">
+            <h2 class="menu-section-header">INTERNATIONAL SPECIALTIES</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px;">
+                <!-- Item 1 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Beef Burger</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$15.99</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Premium beef patty with cheese, lettuce, and special sauce</p>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Grilled Salmon</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$22.50</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Atlantic salmon with lemon butter sauce and vegetables</p>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Chicken Alfredo Pasta</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$16.99</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Fettuccine pasta with grilled chicken and creamy Alfredo sauce</p>
+                </div>
+                
+                <!-- Item 4 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Pepperoni Pizza</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$14.99</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Classic pepperoni pizza with mozzarella cheese and tomato sauce</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Desserts Section -->
+        <section id="desserts" style="margin-bottom: 50px;">
+            <h2 class="menu-section-header">DESSERTS</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px;">
+                <!-- Item 1 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Baklava</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$7.99</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Layers of filo pastry with nuts and sweet syrup</p>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Knafeh</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$8.50</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Sweet cheese pastry soaked in syrup</p>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Chocolate Lava Cake</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$10.50</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Warm chocolate cake with a molten center</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Drinks Section -->
+        <section id="drinks" style="margin-bottom: 50px;">
+            <h2 class="menu-section-header">DRINKS</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px;">
+                <!-- Item 1 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Lebanese Wine</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$8.99/glass</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Selection of fine Lebanese wines</p>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Ayran</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$3.50</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Refreshing yogurt drink</p>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Jallab</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$5.00</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">A traditional drink made from carob syrup and dates</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arguile Section -->
+        <section id="arguile" style="margin-bottom: 50px;">
+            <h2 class="menu-section-header">ARGUILE</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px;">
+                <!-- Item 1 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Classic Flavors</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$15.00</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Apple, Grape, Mint, Lemon</p>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="item-card">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h3 style="margin: 0; color: #5e4d46;">Special Blends</h3>
+                        <span style="font-weight: bold; color: #b8860b;">$20.00</span>
+                    </div>
+                    <p style="margin: 10px 0; color: #555;">Double Apple, Grape Mint, Watermelon</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer style="text-align: center; padding: 30px; background: #5e4d46; color: white; border-radius: 10px; margin-top: 40px;">
+            <h3 style="margin-top: 0;">Cedar & Spice Restaurant</h3>
+            <p>Beirut, Lebanon | +961 1 123 456 | info@cedar-and-spice.com</p>
+            <div style="margin-top: 20px;">
+                <i class="fab fa-facebook" style="font-size: 1.5rem; margin: 0 10px;"></i>
+                <i class="fab fa-instagram" style="font-size: 1.5rem; margin: 0 10px;"></i>
+                <i class="fab fa-tripadvisor" style="font-size: 1.5rem; margin: 0 10px;"></i>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9rem;">© 2023 Cedar & Spice Restaurant. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Scroll-to-top button -->
+    <button id="scrollToTopBtn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Get the button
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        const menuNav = document.getElementById("menu-nav");
+
+        // When the user scrolls down, show or hide the button
+        window.onscroll = function() {
+            // Get the position of the menu navigation bar
+            const menuNavBottom = menuNav.getBoundingClientRect().bottom;
+
+            if (menuNavBottom < 0) {
+                scrollToTopBtn.classList.add("show");
+            } else {
+                scrollToTopBtn.classList.remove("show");
+            }
+        };
+
+        // When the user clicks on the button, scroll to the top of the document
+        scrollToTopBtn.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
